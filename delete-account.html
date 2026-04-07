@@ -1,133 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supprimer mon compte - Nat Quizz</title>
-    <!-- EmailJS CDN -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --danger-color: #e74c3c;
-            --bg-color: #f9f9f9;
-            --text-color: #333;
-            --border-color: #e0e0e0;
-            --success-color: #27ae60;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-        }
-        .header { text-align: center; margin-bottom: 35px; }
-        .header h1 { color: var(--primary-color); font-size: 1.8em; margin-bottom: 10px; }
-        .header p { color: #666; font-size: 0.95em; }
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 4px;
-        }
-        .warning-box strong { color: var(--primary-color); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; color: var(--primary-color); font-weight: 600; font-size: 0.95em; }
-        input[type="email"], input[type="text"] {
-            width: 100%; padding: 12px 15px; border: 2px solid var(--border-color); border-radius: 6px; font-size: 1em; transition: border-color 0.3s ease; font-family: inherit;
-        }
-        input[type="email"]:focus, input[type="text"]:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); }
-        .form-info { font-size: 0.85em; color: #666; margin-top: 5px; }
-        .checkbox-group { display: flex; align-items: flex-start; margin-bottom: 25px; padding: 15px; background-color: #f9f9f9; border-radius: 6px; }
-        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 12px; margin-top: 2px; cursor: pointer; accent-color: var(--danger-color); }
-        .checkbox-label { font-size: 0.95em; color: var(--primary-color); cursor: pointer; font-weight: 500; }
-        .button-group { display: flex; gap: 10px; margin-top: 30px; }
-        button {
-            flex: 1; padding: 12px 20px; border: none; border-radius: 6px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: inherit;
-        }
-        .btn-delete { background-color: var(--danger-color); color: white; }
-        .btn-delete:hover:not(:disabled) { background-color: #c0392b; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); }
-        .btn-delete:disabled { background-color: #bdc3c7; cursor: not-allowed; opacity: 0.6; }
-        .btn-cancel { background-color: var(--border-color); color: var(--primary-color); }
-        .btn-cancel:hover { background-color: #d0d0d0; transform: translateY(-2px); }
-        .success-message { display: none; background-color: #d4edda; border: 2px solid var(--success-color); color: #155724; padding: 15px; border-radius: 6px; margin-top: 20px; text-align: center; animation: slideIn 0.3s ease; }
-        .error-message { display: none; background-color: #f8d7da; border: 2px solid var(--danger-color); color: #721c24; padding: 15px; border-radius: 6px; margin-top: 20px; text-align: center; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .footer-text { text-align: center; font-size: 0.85em; color: #999; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-color); }
-        @media (max-width: 600px) { .container { padding: 25px; } .header h1 { font-size: 1.5em; } .button-group { flex-direction: column; } }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="header">
-        <h1>🗑️ Supprimer mon compte</h1>
-        <p>Nat Quizz</p>
-    </div>
-
-    <div class="warning-box">
-        <strong>⚠️ Attention :</strong> Cette action est irréversible. Toutes vos données (progression, scores, statistiques) seront supprimées définitivement après 30 jours.
-    </div>
-
-    <form id="deleteForm">
-        <div class="form-group">
-            <label for="email">Adresse email *</label>
-            <input type="email" id="email" name="email" placeholder="votre.email@exemple.com" required>
-            <div class="form-info">L'email lié à votre compte Nat Quizz</div>
-        </div>
-
-        <div class="form-group">
-            <label for="username">Pseudo (nom d'utilisateur) *</label>
-            <input type="text" id="username" name="username" placeholder="Votre pseudo" required>
-            <div class="form-info">Le pseudo affichant dans l'application</div>
-        </div>
-
-        <div class="checkbox-group">
-            <input type="checkbox" id="confirm" name="confirm" required>
-            <label for="confirm" class="checkbox-label">
-                Je confirme que je souhaite supprimer définitivement mon compte et toutes mes données
-            </label>
-        </div>
-
-        <div class="button-group">
-            <button type="button" class="btn-cancel" onclick="goBack()">Annuler</button>
-            <button type="submit" class="btn-delete" id="submitBtn">Supprimer mon compte</button>
-        </div>
-
-        <div class="success-message" id="successMessage">
-            ✅ <strong>Demande envoyée avec succès !</strong><br>
-            Un email de confirmation a été envoyé à <span id="successEmail"></span>.<br>
-            Vous recevrez un email de confirmation pour valider la suppression.
-        </div>
-
-        <div class="error-message" id="errorMessage">
-            ❌ <strong>Erreur lors de l'envoi.</strong><br>
-            <span id="errorDetail">Veuillez réessayer ou contactez le support.</span>
-        </div>
-    </form>
-
-    <div class="footer-text">
-        Pour toute question : <a href="mailto:n.fleury-frouart@etik.com" style="color: var(--accent-color);">n.fleury-frouart@etik.com</a><br>
-        Biloba Studio © 2026
-    </div>
-</div>
-
 <script>
     // Initialiser EmailJS
     emailjs.init('6I0xqrp11MLKVrAbI'); // Remplacez par votre clé publique EmailJS
@@ -139,6 +9,16 @@
     const errorDetail = document.getElementById('errorDetail');
     const submitBtn = document.getElementById('submitBtn');
 
+    // Afficher le message de succès dès que l'utilisateur clique sur le bouton
+    submitBtn.addEventListener('click', (e) => {
+        const email = document.getElementById('email').value.trim();
+        if (email) {
+            successEmail.textContent = email;
+            successMessage.style.display = 'block';
+        }
+    });
+
+    // Gestion de l'envoi EmailJS
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -146,7 +26,7 @@
         const username = document.getElementById('username').value.trim();
         const confirmed = document.getElementById('confirm').checked;
 
-        successMessage.style.display = 'none';
+        // Réinitialiser les messages d'erreur
         errorMessage.style.display = 'none';
 
         if (!email || !username || !confirmed) {
@@ -172,9 +52,9 @@
             });
 
             if (response.status === 200) {
-                successEmail.textContent = email;
-                successMessage.style.display = 'block';
+                // L'email est envoyé avec succès
                 form.reset();
+                document.getElementById('confirm').checked = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Supprimer mon compte';
             } else {
@@ -193,6 +73,3 @@
         window.history.back();
     }
 </script>
-
-</body>
-</html>
