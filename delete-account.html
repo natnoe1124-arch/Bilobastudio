@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supprimer mon compte - Nat Quizz</title>
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -308,6 +310,9 @@
 </div>
 
 <script>
+    // Initialiser EmailJS
+    emailjs.init('YOUR_PUBLIC_KEY'); // À remplacer avec votre clé publique
+
     const form = document.getElementById('deleteForm');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
@@ -346,28 +351,23 @@
         submitBtn.textContent = 'Envoi en cours...';
 
         try {
-            // Envoyer l'email via FormSubmit (service gratuit)
-            const response = await fetch('https://formspree.io/f/xyzgbklw', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    username: username,
-                    message: `Demande de suppression de compte Nat Quizz\n\nEmail: ${email}\nPseudo: ${username}\n\nL'utilisateur demande la suppression définitive de son compte et de toutes ses données.`,
-                    _subject: 'Demande de suppression de compte - Nat Quizz'
-                })
+            // Envoyer l'email via EmailJS
+            const response = await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+                to_email: 'n.fleury-frouart@etik.com',
+                user_email: email,
+                user_username: username,
+                subject: 'Demande de suppression de compte - Nat Quizz',
+                message: `Demande de suppression de compte Nat Quizz\n\nEmail utilisateur: ${email}\nPseudo: ${username}\n\nL'utilisateur demande la suppression définitive de son compte et de toutes ses données.`
             });
 
-            if (response.ok) {
+            if (response.status === 200) {
                 successMessage.style.display = 'block';
                 form.reset();
                 document.getElementById('confirm').checked = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Supprimer mon compte';
             } else {
-                throw new Error('Erreur réseau');
+                throw new Error('Erreur lors de l\'envoi');
             }
         } catch (error) {
             console.error('Erreur:', error);
