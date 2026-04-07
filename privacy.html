@@ -28,4 +28,232 @@
             background: #fff;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 35px;
+            font-size: 1.4em;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #555;
+            margin-top: 25px;
+            font-size: 1.1em;
+        }
+
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background-color: #f0f8ff;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .contact-info {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Politique de Confidentialité - Nat Quizz</h1>
+    
+    <p><strong>Dernière mise à jour :</strong> 7 avril 2026</p>
+
+    <div class="highlight-box">
+        <strong>Introduction</strong><br>
+        Nat Quizz (ci-après "l'Application") respecte votre vie privée. Cette Politique de Confidentialité explique comment nous collectons, utilisons, partageons et protégeons vos données personnelles. Cette Application est développée par <strong>Biloba Studio</strong> et est disponible sur Google Play Store.
+    </div>
+
+    <h2>1. Informations que nous collectons</h2>
+    
+    <h3>1.1 Informations d'authentification</h3>
+    <p>Lors de votre connexion à l'Application via Google Sign-In, nous collectons :</p>
+    <ul>
+        <li>Votre adresse e-mail</li>
+        <li>Votre nom et prénom</li>
+        <li>Votre photo de profil</li>
+        <li>Votre identifiant unique Google</li>
+    </ul>
+    <p>Ces informations sont stockées de manière sécurisée dans notre base de données Firestore pour permettre la sauvegarde de votre progression, la personnalisation de votre expérience et la synchronisation entre appareils.</p>
+
+    <h3>1.2 Données d'apprentissage</h3>
+    <p>Nous collectons et stockons :</p>
+    <ul>
+        <li>Vos réponses aux quiz</li>
+        <li>Votre progression d'apprentissage</li>
+        <li>Vos scores et statistiques</li>
+        <li>La date et heure de vos sessions d'apprentissage</li>
+        <li>Vos préférences pour l'affiche des noms d'espèces (nom français / nom latin)</li>
+    </ul>
+
+    <h3>1.3 Données techniques</h3>
+    <p>Automatiquement collectées par Firebase :</p>
+    <ul>
+        <li>Votre système d'exploitation et version Android</li>
+        <li>Le type et modèle de votre appareil</li>
+        <li>Votre adresse IP</li>
+        <li>Les crashs et erreurs de l'Application</li>
+        <li>Les événements d'utilisation (pages visitées, actions effectuées)</li>
+        <li>La date et heure de vos accès</li>
+    </ul>
+
+    <h3>1.4 Contenus utilisateur</h3>
+    <p>Les commentaires ou retours que vous soumettez volontairement.</p>
+
+    <h2>2. Utilisation de vos données</h2>
+    <p>Nous utilisons vos données pour :</p>
+    <ul>
+        <li><strong>Services principaux :</strong> Fournir l'accès à l'Application, sauvegarder votre progression, générer vos statistiques, produire des classements, envoyer des notifications de rappel et améliorer le contenu pédagogique.</li>
+        <li><strong>Sécurité et conformité :</strong> Prévenir les fraudes, respecter les obligations légales et protéger nos droits.</li>
+        <li><strong>Améliorations :</strong> Analyser les bugs, améliorer les performances et comprendre comment vous utilisez l'Application.</li>
+    </ul>
+
+    <h2>3. Partage de vos données</h2>
+    <p>Nous <strong>NE partageons PAS</strong> vos données personnelles avec des tiers, sauf :</p>
+    
+    <h3>3.1 Avec nos prestataires techniques (Google Firebase)</h3>
+    <ul>
+        <li><strong>Firestore :</strong> Stockage de vos données.</li>
+        <li><strong>Google Sign-In :</strong> Authentification.</li>
+        <li><strong>Cloud Storage :</strong> Stockage des images de profil.</li>
+        <li><strong>Cloud Messaging :</strong> Notifications.</li>
+        <li><strong>Google Analytics :</strong> Analyse d'utilisation anonyme (données agrégées).</li>
+    </ul>
+    <p>Nous ne vendons, n'échangeons et ne louons jamais vos données personnelles à des tiers.</p>
+
+    <h2>4. Sécurité des données</h2>
+    <p>Nous prenons la sécurité très au sérieux :</p>
+    <ul>
+        <li>Connexions HTTPS/TLS pour tous les transferts</li>
+        <li>Chiffrement des données en transit et au repos</li>
+        <li>Authentification sécurisée via Google</li>
+        <li>Accès restreint aux données et conformité aux règles de sécurité Firebase</li>
+        <li>Sauvegardes régulières</li>
+    </ul>
+    <p><em>Note : Aucun système n'est 100% sécurisé. Vous êtes responsable de la sécurité de votre compte Google.</em></p>
+
+    <h2>5. Moteur de stockage</h2>
+    <ul>
+        <li><strong>Firebase Firestore :</strong> Base de données NoSQL hébergée par Google UE. Règles de sécurité appliquées, accès uniquement à vos propres données.</li>
+        <li><strong>Google Cloud Storage :</strong> Stockage sécurisé des images et ressources avec suppression possible à votre demande.</li>
+    </ul>
+
+    <h2>6. Vos droits</h2>
+    <p>Conformément au RGPD et aux lois applicables, vous disposez des droits suivants :</p>
+    <ul>
+        <li><strong>Droit d'accès :</strong> Demander une copie de vos données.</li>
+        <li><strong>Droit de rectification :</strong> Corriger vos données inexactes.</li>
+        <li><strong>Droit à l'oubli :</strong> Demander la suppression de vos données.</li>
+        <li><strong>Droit à la portabilité :</strong> Recevoir vos données dans un format standard.</li>
+        <li><strong>Droit d'opposition :</strong> Refuser certains traitements.</li>
+    </ul>
+
+    <h2>7. Notifications</h2>
+    <p>L'Application peut vous envoyer des rappels d'apprentissage ou des messages de sécurité. Vous pouvez désactiver ces notifications à tout moment dans : <em>Paramètres du téléphone > Notifications > Nat Quizz</em>.</p>
+
+    <h2>8. Garde des données</h2>
+    <ul>
+        <li><strong>Données de compte :</strong> Conservées tant que votre compte est actif.</li>
+        <li><strong>Données d'apprentissage :</strong> Conservées aussi longtemps que vous utilisez l'app.</li>
+        <li><strong>Logs techniques :</strong> Conservés 90 jours.</li>
+        <li><strong>Suppression de compte :</strong> Vos données sont définitivement supprimées dans un délai de 30 jours après la demande.</li>
+    </ul>
+
+    <h2>9. Modifications de cette politique</h2>
+    <p>Cette Politique peut être mise à jour occasionnellement. Les modifications substantielles vous seront notifiées ou vous devrez accepter la nouvelle politique. Nous vous recommandons de vérifier cette page régulièrement.</p>
+
+    <h2>10. Conformité légale</h2>
+    <p>Cette Application respecte le RGPD, la CCPA (Loi californienne), les lois françaises sur la protection des données, ainsi que les Conditions de service de Google Play Store et Firebase.</p>
+
+    <h2>11. Informations supplémentaires</h2>
+    <ul>
+        <li><strong>Cookies :</strong> L'Application ne stocke pas de cookies traditionnels. Les données de session sont gérées par Firebase Authentication.</li>
+        <li><strong>Enfants :</strong> Cette Application n'est pas destinée aux enfants de moins de 13 ans. Toute donnée collectée sans consentement parental sera supprimée.</li>
+        <li><strong>Liens tiers :</strong> Nous ne sommes pas responsables des politiques de confidentialité des sites externes.</li>
+        <li><strong>Changement de propriétaire :</strong> En cas de fusion ou acquisition, vos données pourraient être transférées conformément aux lois applicables.</li>
+    </ul>
+
+    <div class="contact-info">
+        <h2>12. Contact</h2>
+        <p>Pour toute question concernant cette Politique de Confidentialité ou pour exercer vos droits :</p>
+        <p><strong>Email :</strong> <a href="mailto:n.fleury-frouart@etik.com">n.fleury-frouart@etik.com</a><br>
+        <strong>Studio :</strong> Biloba Studio<br>
+        <strong>Localisation :</strong> Le Bosc-du-Theil, France</p>
+        <p><em>Pour les demandes RGPD, veuillez inclure une description de votre demande et des documents justificatifs.</em></p>
+    </div>
+
+    <div class="footer">
+        <p>Version 1.1 | Date : 7 avril 2026 | Langue : Français<br>
+        Nat Quizz - Biloba Studio</p>
+    </div>
+</div>
+
+</body>
+</html>
