@@ -139,14 +139,41 @@
     const errorDetail = document.getElementById('errorDetail');
     const submitBtn = document.getElementById('submitBtn');
 
-    // Afficher le message de succès dès que l'utilisateur clique sur le bouton
-    submitBtn.addEventListener('click', (e) => {
-        const email = document.getElementById('email').value.trim();
-        if (email) {
+   form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
+
+    const email = document.getElementById('email').value.trim();
+    const username = document.getElementById('username').value.trim();
+    const confirmed = document.getElementById('confirm').checked;
+
+    // validation...
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    try {
+        const response = await emailjs.send('service_Bilobastudio', 'template_mtzqx0d', {
+            user_email: email,
+            user_username: username
+        });
+
+        if (response.status === 200) {
             successEmail.textContent = email;
             successMessage.style.display = 'block';
+            form.reset();
+        } else {
+            throw new Error('Erreur lors de l\'envoi');
         }
-    });
+    } catch (error) {
+        console.error('Erreur EmailJS :', error);
+        errorDetail.textContent = 'Impossible d\'envoyer la demande. Veuillez réessayer plus tard.';
+        errorMessage.style.display = 'block';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Supprimer mon compte';
+    }
+});
 
     // Gestion de l'envoi EmailJS
     form.addEventListener('submit', async (e) => {
